@@ -4,11 +4,106 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Page title</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700&family=Poppins:ital@1&family=Roboto&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="./sass/index.scss" />
-    <script type="module" src="./index.js"></script>
+    <script type="module" src="./js/index.js"></script>
   </head>
   <body>
-    <!-- ❗️❗️❗️ Add partials like so for every page -->
-    <include src="./partials/example.html"></include>
+    <header class="header">
+      <div class="container header__wrap-nav header__container">
+        <div class="container-logo-search">
+          <a
+            class="header__logo text-link text-link__navigation link"
+            href="./index.html"
+            >News</a
+          >
+        </div>
+        <button
+          type="button"
+          class="menu-button is-open"
+          aria-expanded="false"
+          aria-controls="menu-container"
+          data-menu-button
+        >
+          <svg width="54" height="36" aria-label="Преключатель мобільного меню">
+            <use class="icon-cross" href="./images/header.svg#open-menu"></use>
+            <use class="icon-menu" href="./images/header.svg#close-menu"></use>
+          </svg>
+        </button>
+        <div class="menu-container" id="menu-container" data-menu>
+          <ul class="site-nav site-nav__container list">
+            <li class="site-nav__item">
+              <p class="site-nav__link link">Home</p>
+            </li>
+            <li class="site-nav__item">
+              <p class="site-nav__link link">Favorite</p>
+            </li>
+            <li class="site-nav__item">
+              <p class="site-nav__link link">Read</p>
+            </li>
+          </ul>
+        </div>
+        <nav class="header__nav navigation navigation__container">
+          <ul class="nav__list site-nav site-nav__container list">
+            <li class="nav__item site-nav__item">
+              <p class="nav__link site-nav__link link">Home</p>
+            </li>
+            <li class="nav__item site-nav__item">
+              <p class="nav__link site-nav__link link">Favorite</p>
+            </li>
+            <li class="nav__item site-nav__item">
+              <p class="nav__link site-nav__link link">Read</p>
+            </li>
+          </ul>
+        </nav>
+        <div class="container__search">
+          <form class="search" id="search-form">
+            <label class="search__label">
+              <input
+                type="text"
+                name="search"
+                id="search"
+                class="search__line"
+                placeholder="Search"
+              />
+              <svg class="search__ico" width="16" height="15">
+                <use href="./images/header.svg#search"></use>
+              </svg>
+            </label>
+          </form>
+        </div>
+        <div class="switch__theme">
+          <span class="switch__left theme-light">Light</span>
+          <svg class="switch__sun theme-light" width="19" height="19">
+            <use href="./images/header.svg#sun" class="theme-light"></use>
+          </svg>
+          <div class="switch__toogle">
+            <svg class="switch__toogle--ground" width="40" height="20">
+              <use href="./images/header.svg#elipse"></use>
+            </svg>
+            <svg class="switch__toogle--border" width="40" height="20">
+              <use href="./images/header.svg#border"></use>
+            </svg>
+            <svg class="switch__toogle--circle" width="16" height="16">
+              <use href="./images/header.svg#circle"></use>
+            </svg>
+          </div>
+          <svg class="switch__moon theme-dark" width="19" height="19">
+            <use href="./images/header.svg#moon" class="theme-dark"></use>
+          </svg>
+          <span class="switch__right theme-dark">Dark</span>
+        </div>
+      </div>
+      <div class="box-shadow-header"></div>
+    </header>
+    <main></main>
+    <footer>
+      <div class="footer"></div>
+    </footer>
   </body>
 </html>
