@@ -125,7 +125,6 @@ export class ToggleTheme {
     document
       .querySelector(`.${this.#TOGGLE_THEME_CLASS}`)
       .addEventListener('click', e => {
-        console.log(111);
         this.#changeToggle();
       });
   }

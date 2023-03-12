@@ -14,6 +14,17 @@ $mobile: 480px;
   --clr-chevron: #4b48db;
   --clr-is-active-border: #4440f7;
 
+  // pagination
+  --clr-pag: #111321;
+  --clr-pag-border: #4440f6;
+  --clr-pag-bg: #f4f4f4;
+  --clr-pag-active: #4440f7;
+  --clr-pag-more: #111321;
+
+  --clr-bg-filter: #ffffff;
+  --clr-btn-border: #4440f7;
+  --clr-filter: #4440f7;
+
   //
   --color-primary: #111321;
   --color-secondary: #f4f4f4;
@@ -27,18 +38,17 @@ $mobile: 480px;
   --clr-categoty-btn: #4440f6;
   --clr-categoty-btn-text: #4440f7;
   --clr-categoty-btn-background: #ffffff;
-  // pagination
-  --clr-pag: #111321;
-  --clr-pag-border: #4440f6;
-  --clr-pag-bg: #f4f4f4;
-  --clr-pag-active: #4440f7;
-  --clr-pag-more: #111321;
 }
 
+// only color used in dark theme
 .dark-mode {
   --clr-bg: #2e2e2e;
   --clr-border: #f4f4f4;
   --clr-chevron: #f4f4f4;
+  // pagination
+  --clr-pag-more: #f4f4f4;
+
+  --clr-btn-border: #f4f4f4;
 
   //
   --color-primary: #f4f4f4;
@@ -53,11 +63,4 @@ $mobile: 480px;
   --clr-categoty-btn: #4440f6;
   --clr-categoty-btn-text: #4440f7;
   --clr-categoty-btn-background: #ffffff;
-
-  // pagination
-  --clr-pag: #111321;
-  --clr-pag-border: #4440f6;
-  --clr-pag-bg: #f4f4f4;
-  --clr-pag-active: #4440f7;
-  --clr-pag-more: #f4f4f4;
 }

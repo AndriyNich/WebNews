@@ -5,6 +5,9 @@
  *  зробити так, щоб коли не було даних, щоб футер був знизу сторінки
  *  зробити згортання модального меню коли обрана якась сторінка
  *
+ *  виправити кольори для тексту в темній темі для категорій
+ *
+ *  при відкриті модального меню - відключати скрол
  */
 
 import throttle from 'lodash.throttle';
@@ -14,6 +17,7 @@ import {
   ToggleTheme,
   ClickerOnMenuItem,
 } from './header';
+import { CategoriesMain, CategoriesLoader } from './categories';
 
 /**
  * Modal menu
@@ -32,3 +36,10 @@ const clickerOnBtmMobileForm = new ClickerOnBtmMobileForm();
 const toggleThem = new ToggleTheme();
 // menu clicker
 const clickerOnMenuItem = new ClickerOnMenuItem();
+
+/**
+ *
+ */
+// category
+
+//  const categoriesMain = new CategoriesMain();

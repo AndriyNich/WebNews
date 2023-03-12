@@ -356,19 +356,19 @@
 
 .mobile__wrap {
   position: absolute;
-  z-index: auto;
+  z-index: 900;
 
   background-color: var(--clr-bg);
 
   top: calc(-1 * (100vh - 81px)); //100%;
   left: 0;
   right: 0;
-  height: calc(100vh - 95px);
+  height: calc(100vh - 92px);
 
   transition: transform 500ms linear;
 
   &.is-open {
-    transform: translateY(calc(100% + 105px));
+    transform: translateY(calc(100% + 103px));
   }
 }
 
