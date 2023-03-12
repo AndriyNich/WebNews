@@ -1,16 +1,18 @@
 /**
  * ToDo List
- * 1. доробити виділення меню коли відкрита активна сторінка.
- * 2. зробити перехід по сторінкам при натискані пунктів меню
- * 3. зобити "спінер" який буде крутитися коли йде завантаження
- * 4. зробити так, щоб коли не було даних, щоб футер був знизу сторінки
+ *  зробити перехід по сторінкам при натискані пунктів меню
+ *  зобити "спінер" який буде крутитися коли йде завантаження
+ *  зробити так, щоб коли не було даних, щоб футер був знизу сторінки
+ *  зробити згортання модального меню коли обрана якась сторінка
  *
  */
+
 import throttle from 'lodash.throttle';
 import {
   ManageMenuPosition,
   ClickerOnBtmMobileForm,
   ToggleTheme,
+  ClickerOnMenuItem,
 } from './header';
 
 /**
@@ -28,3 +30,5 @@ window.addEventListener(
 const clickerOnBtmMobileForm = new ClickerOnBtmMobileForm();
 // toggle theme
 const toggleThem = new ToggleTheme();
+// menu clicker
+const clickerOnMenuItem = new ClickerOnMenuItem();

@@ -63,6 +63,7 @@
 }
 
 .nav__item {
+  position: relative;
   display: flex;
   padding: 6 16px;
   align-items: center;
@@ -86,6 +87,25 @@
     &:hover,
     &:focus {
       background-color: transparent;
+    }
+  }
+}
+
+.is-active {
+  .nav__wrap &:after {
+    position: absolute;
+    content: '';
+    top: calc(100% + 8px);
+    left: 0;
+    right: 0;
+    border-bottom: 1px solid var(--clr-is-active-border);
+  }
+
+  .mobile__container & {
+    background-color: var(--clr-bg-menu-hover);
+
+    & .nav__svg--chevron {
+      stroke: var(--clr-pag-bg);
     }
   }
 }

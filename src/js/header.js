@@ -160,3 +160,93 @@ export class ToggleTheme {
     }
   }
 }
+
+/**
+ * Clicker on menu item
+ */
+export class ClickerOnMenuItem {
+  #CLASS_FOR_REFS = {
+    news: 'header__logo',
+    home: 'nav__item--home',
+    favorite: 'nav__item--favorite',
+    read: 'nav__item--read',
+  };
+
+  #MENU_ITEM = {
+    news: 'home',
+    home: 'home',
+    favorite: 'favorite',
+    read: 'read',
+  };
+
+  #CLASS_IS_ACTIVE = 'is-active';
+
+  #refs = {
+    news: null,
+    home: null,
+    favorite: null,
+    read: null,
+  };
+
+  #currentSelectMenuItem;
+  #onChangeMenuItem = () => {
+    console.log(this.#currentSelectMenuItem);
+  };
+
+  constructor() {
+    this.#setStartRefs();
+    this.#addEventListeners();
+    this.#setSelectedMenuItem(this.#MENU_ITEM.home);
+  }
+
+  getCurrentSelectMenuItem() {
+    return this.#currentSelectMenuItem;
+  }
+
+  addEventListenerChangeMenuItem(callback) {
+    this.#onChangeMenuItem = callback;
+  }
+
+  #setStartRefs() {
+    this.#refs.news = document.querySelector(`.${this.#CLASS_FOR_REFS.news}`);
+    this.#refs.home = document.querySelector(`.${this.#CLASS_FOR_REFS.home}`);
+    this.#refs.favorite = document.querySelector(
+      `.${this.#CLASS_FOR_REFS.favorite}`
+    );
+    this.#refs.read = document.querySelector(`.${this.#CLASS_FOR_REFS.read}`);
+  }
+
+  #addEventListeners() {
+    for (const key in this.#refs) {
+      this.#refs[key].addEventListener(
+        'click',
+        this.#onClickMenuItem.bind(this)
+      );
+    }
+  }
+
+  #onClickMenuItem(e) {
+    for (const key in this.#CLASS_FOR_REFS) {
+      if (e.currentTarget.classList.contains(this.#CLASS_FOR_REFS[key])) {
+        this.#setSelectedMenuItem(this.#MENU_ITEM[key]);
+        return;
+      }
+    }
+  }
+
+  #setSelectedMenuItem(menuImem) {
+    this.#currentSelectMenuItem = menuImem;
+    this.#setCurrentMenuItemIsActive();
+    this.#onChangeMenuItem();
+  }
+
+  #setCurrentMenuItemIsActive() {
+    for (const key in this.#CLASS_FOR_REFS) {
+      if (key == this.#currentSelectMenuItem) {
+        this.#refs[key].classList.add(this.#CLASS_IS_ACTIVE);
+      } else {
+        this.#refs[key].classList.remove(this.#CLASS_IS_ACTIVE);
+      }
+    }
+  }
+}
