@@ -8,8 +8,12 @@ $mobile: 480px;
   --mobile: $mobile;
 
   --bg-footer: #7a7a7a;
-
   --clr-border: #111321;
+  --clr-bg-menu-hover: #4b48db;
+  --clr-bg: #f4f4f4;
+  --clr-chevron: #4b48db;
+
+  //
   --color-primary: #111321;
   --color-secondary: #f4f4f4;
   --clr-switch-light: #4b48db;
@@ -31,7 +35,11 @@ $mobile: 480px;
 }
 
 .dark-mode {
+  --clr-bg: #2e2e2e;
   --clr-border: #f4f4f4;
+  --clr-chevron: #f4f4f4;
+
+  //
   --color-primary: #f4f4f4;
   --color-secondary: #2e2e2e;
   --clr-switch-light: #5f6775;
@@ -44,6 +52,7 @@ $mobile: 480px;
   --clr-categoty-btn: #4440f6;
   --clr-categoty-btn-text: #4440f7;
   --clr-categoty-btn-background: #ffffff;
+
   // pagination
   --clr-pag: #111321;
   --clr-pag-border: #4440f6;

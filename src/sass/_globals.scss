@@ -11,7 +11,7 @@ body {
   margin: 0 auto;
 
   @include mobile {
-    width: var(--mobile);
+    width: $mobile;
   }
 
   @include tablet {

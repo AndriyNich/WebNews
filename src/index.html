@@ -22,11 +22,16 @@
           <nav class="nav">
             <ul class="nav__list">
               <li class="nav__item">
-                <svg class="nav__svg" width="32" height="32">
-                  <use class="nav__icon" href="./images/header.svg#home"></use>
-                </svg>
-                <span class="nav__title">Home</span>
-                <svg class="nav__svg" width="20" height="20">
+                <div class="nav__item-wrap">
+                  <svg class="nav__svg" width="32" height="32">
+                    <use
+                      class="nav__icon"
+                      href="./images/header.svg#home"
+                    ></use>
+                  </svg>
+                  <span class="nav__title">Home</span>
+                </div>
+                <svg class="nav__svg nav__svg--chevron" width="20" height="20">
                   <use
                     class="nav__icon"
                     href="./images/header.svg#chevron-right"
@@ -34,14 +39,16 @@
                 </svg>
               </li>
               <li class="nav__item">
-                <svg class="nav__svg" width="32" height="32">
-                  <use
-                    class="nav__icon"
-                    href="./images/header.svg#favorite"
-                  ></use>
-                </svg>
-                <span class="nav__title">Favorite</span>
-                <svg class="nav__svg" width="20" height="20">
+                <div class="nav__item-wrap">
+                  <svg class="nav__svg" width="32" height="32">
+                    <use
+                      class="nav__icon"
+                      href="./images/header.svg#favorite"
+                    ></use>
+                  </svg>
+                  <span class="nav__title">Favorite</span>
+                </div>
+                <svg class="nav__svg nav__svg--chevron" width="20" height="20">
                   <use
                     class="nav__icon"
                     href="./images/header.svg#chevron-right"
@@ -49,11 +56,16 @@
                 </svg>
               </li>
               <li class="nav__item">
-                <svg class="nav__svg" width="32" height="32">
-                  <use class="nav__icon" href="./images/header.svg#read"></use>
-                </svg>
-                <span class="nav__title">Read</span>
-                <svg class="nav__svg" width="20" height="20">
+                <div class="nav__item-wrap">
+                  <svg class="nav__svg" width="32" height="32">
+                    <use
+                      class="nav__icon"
+                      href="./images/header.svg#read"
+                    ></use>
+                  </svg>
+                  <span class="nav__title">Read</span>
+                </div>
+                <svg class="nav__svg nav__svg--chevron" width="20" height="20">
                   <use
                     class="nav__icon"
                     href="./images/header.svg#chevron-right"
@@ -97,28 +109,24 @@
               <span class="switch__right theme-dark">Dark</span>
             </div>
           </div>
-          <div class="mobile__btn">
-            <svg
-              width="30"
-              height="20"
-              aria-label="Преключатель мобільного меню"
-            >
-              <use
-                class="icon-cross"
-                href="./images/header.svg#open-menu"
-              ></use>
-              <use
-                class="icon-menu"
-                href="./images/header.svg#close-menu"
-              ></use>
+          <div class="mobile__btn no-view" data-mobile-value="on">
+            <svg class="icon-menu" width="32" height="32">
+              <use href="./images/header.svg#open-menu"></use>
+            </svg>
+            <svg class="icon-cross no-view" width="32" height="32">
+              <use href="./images/header.svg#close-menu"></use>
             </svg>
           </div>
-          <div class="mobile__wrap"></div>
         </div>
+      </div>
+      <div class="mobile__wrap">
+        <div class="mobile__container"></div>
       </div>
     </header>
 
-    <main></main>
+    <main>
+      <p>dfsd fsd</p>
+    </main>
     <footer>
       <div class="footer"></div>
     </footer>
