@@ -1,2 +1,0 @@
-!function(){var e={MOBILE:"to-mobile",ROW:"row"};function t(t){var n="",o="";t==e.MOBILE?o=n=document.querySelector(".mobile__wrap"):(n=document.querySelector(".nav"),o=document.querySelector(".switch__wrap"));var r=document.querySelector(".nav__list"),c=document.querySelector(".switch__theme");n.append(r),o.append(c)}window.addEventListener("resize",(function(n){var o=e.MOBILE;window.matchMedia("(min-width: 768px)").matches&&(o=e.ROW);t(o)}))}();
-//# sourceMappingURL=index.dae2ece6.js.map

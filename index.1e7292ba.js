@@ -1,2 +1,0 @@
-const e={MOBILE:"to-mobile",ROW:"row"};function t(t){let n="",o="";t==e.MOBILE?(n=document.querySelector(".mobile__wrap"),o=n):(n=document.querySelector(".nav"),o=document.querySelector(".switch__wrap"));const c=document.querySelector(".nav__list"),r=document.querySelector(".switch__theme");n.append(c),o.append(r)}window.addEventListener("resize",(function(n){let o=e.MOBILE;window.matchMedia("(min-width: 768px)").matches&&(o=e.ROW);t(o)}));
-//# sourceMappingURL=index.1e7292ba.js.map
