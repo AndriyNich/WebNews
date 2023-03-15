@@ -4,26 +4,32 @@
  *  зобити "спінер" який буде крутитися коли йде завантаження
  *  зробити так, щоб коли не було даних, щоб футер був знизу сторінки
  *  зробити згортання модального меню коли обрана якась сторінка
- *
- *  виправити кольори для тексту в темній темі для категорій
- *
  *  при відкриті модального меню - відключати скрол
+ *
+ *  завішати на подію кліку по категорї пошук.
+ *
+ *  зарендирити пусту сторінку
  */
 
 import throttle from 'lodash.throttle';
+
+import { THROTTLE_DELAY } from './globals';
 import {
   ManageMenuPosition,
   ClickerOnBtmMobileForm,
   ToggleTheme,
   ClickerOnMenuItem,
 } from './header';
-import { CategoriesMain, CategoriesLoader } from './categories';
+import { CategoriesMain } from './categories';
 
 /**
  *
  */
 // category
 const categoriesMain = new CategoriesMain();
+categoriesMain.addEventOnChangeCategory(value => {
+  console.log(value);
+});
 
 /**
  * Modal menu
@@ -35,7 +41,7 @@ window.addEventListener(
   throttle(e => {
     manageMenuPosition.rebuildMobileMenuByWindowResize();
     categoriesMain.windowsResize();
-  }, 250)
+  }, THROTTLE_DELAY)
 );
 // event 'click' on btn mobile form
 const clickerOnBtmMobileForm = new ClickerOnBtmMobileForm();

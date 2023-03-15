@@ -298,11 +298,12 @@
   font-size: 14px;
   line-height: 1.71;
   text-align: center;
-  color: var(--clr-border);
-  opacity: 0.4;
+  color: var(--clr-text);
 
   &::placeholder {
+    color: var(--clr-border);
     text-align: left;
+    opacity: 0.4;
   }
 }
 

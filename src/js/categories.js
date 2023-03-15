@@ -1,6 +1,7 @@
+import throttle from 'lodash.throttle';
 import CategoriesLoader from './categories-loader';
 
-import { NO_VIEW_CLASS } from './globals';
+import { NO_VIEW_CLASS, THROTTLE_DELAY } from './globals';
 
 /**
  * work with categories
@@ -10,13 +11,17 @@ export class CategoriesMain {
   #SERVICE_CATEGORY_ID = 'others';
   #SERVICE_CATEGORY_CLASS = 'categories__label--modal';
   #CATEGORY_MODAL_LIST_CLASS = 'categories__modal-list';
+  #CATEGORY_OTHER_SELECTED_CLASS = 'categories__other--selected';
+  #ARROW_CLASS = 'category__arrow';
+  #ARROW_ROTATE_CLASS = 'category_arrow--rotate';
 
   #categoriesLoader;
   #categoriesList;
   #amounButton = -1;
   #leftListElements;
   #modalListElements;
-  #selectElementInModalListElements;
+  #selectElementInModalListElements = '';
+  #callback = () => {};
 
   constructor() {
     this.#categoriesLoader = new CategoriesLoader();
@@ -41,6 +46,10 @@ export class CategoriesMain {
     }
   }
 
+  addEventOnChangeCategory(callback) {
+    this.#callback = callback;
+  }
+
   #buildCategoriesList(categoriesList) {
     this.#categoriesList = categoriesList;
     this.windowsResize();
@@ -49,6 +58,15 @@ export class CategoriesMain {
   #renderCategoriesList() {
     this.#buildElementsArrays();
     this.#drawListElementsToHTML();
+    this.#setCurrentValue();
+  }
+
+  #setCurrentValue() {
+    if (this.#selectElementInModalListElements.length > 0) {
+      document.querySelector('#form-categories').elements[
+        this.#selectElementInModalListElements
+      ].checked = true;
+    }
   }
 
   #drawListElementsToHTML() {
@@ -60,7 +78,7 @@ export class CategoriesMain {
 
   #createHtmlModalList(innerHTML) {
     const section = this.#SERVICE_CATEGORY_ID;
-    const display_name = this.#amounButton == 0 ? 'Categories' : 'Others';
+    const display_name = this.#displayNameForOthersBtn();
 
     return `
       <li class="categories__item">
@@ -73,6 +91,10 @@ export class CategoriesMain {
         </label>
         <ul class="categories__modal-list no-view">${innerHTML}</ul>
       </li>`;
+  }
+
+  #displayNameForOthersBtn() {
+    return this.#amounButton == 0 ? 'Categories' : 'Others';
   }
 
   #createHtmlElements(array) {
@@ -104,14 +126,17 @@ export class CategoriesMain {
 
   #addEventListenerOnChangeSelectCategory() {
     this.#refListElements.parentElement.addEventListener(
-      'change',
-      this.#onChangeSelectCategory.bind(this)
+      'click',
+      throttle(this.#onChangeSelectCategory.bind(this), THROTTLE_DELAY)
     );
   }
 
   #onChangeSelectCategory(e) {
     if (e.target.id !== this.#SERVICE_CATEGORY_ID) {
       this.#selectElementInModalListElements = e.target.id;
+      if (e.target.value) {
+        this.#callback(e.target.value);
+      }
     }
     this.#toggleModalCategoryList(e.target.id);
   }
@@ -120,12 +145,30 @@ export class CategoriesMain {
     const modalList = this.#refListElements.querySelector(
       `.${this.#CATEGORY_MODAL_LIST_CLASS}`
     );
+
+    if (selectCategoryID == '') {
+      return;
+    }
+
     if (selectCategoryID == this.#SERVICE_CATEGORY_ID) {
-      modalList.classList.remove(NO_VIEW_CLASS);
+      modalList.classList.toggle(NO_VIEW_CLASS);
     } else {
       modalList.classList.add(NO_VIEW_CLASS);
 
       this.#changeLabelOnOtherButton(selectCategoryID);
+    }
+
+    this.#categoryArrowRotate(!modalList.classList.contains(NO_VIEW_CLASS));
+  }
+
+  #categoryArrowRotate(value) {
+    const refArrowClassList = document.querySelector(
+      `.${this.#ARROW_CLASS}`
+    ).classList;
+    if (value) {
+      refArrowClassList.add(this.#ARROW_ROTATE_CLASS);
+    } else {
+      refArrowClassList.remove(this.#ARROW_ROTATE_CLASS);
     }
   }
 
@@ -136,21 +179,26 @@ export class CategoriesMain {
 
     if (selectCategory.length > 0) {
       this.#enterNewCategoryNameToBtnCaption(selectCategory[0].display_name);
-      this.#setSelectOnOtherButton();
+    } else {
+      this.#returnBaseNameOnBtnOtherWhenClickBtnNotModalList();
     }
   }
 
   #enterNewCategoryNameToBtnCaption(caption) {
-    this.#refListElements.querySelector(
-      `.${this.#SERVICE_CATEGORY_CLASS} div`
-    ).innerHTML = caption;
+    const categroyOthers = this.#refListElements.querySelector(
+      `.${this.#SERVICE_CATEGORY_CLASS}`
+    );
+    categroyOthers.classList.add(this.#CATEGORY_OTHER_SELECTED_CLASS);
+
+    categroyOthers.querySelector('div').innerHTML = caption;
   }
 
-  #setSelectOnOtherButton() {
-    console.dir(
-      document.querySelector('#form-categories').elements.categories.value
+  #returnBaseNameOnBtnOtherWhenClickBtnNotModalList() {
+    const categroyOthers = this.#refListElements.querySelector(
+      `.${this.#SERVICE_CATEGORY_CLASS}`
     );
-    document.querySelector('#form-categories').elements.categories.value =
-      'Others';
+    categroyOthers.classList.remove(this.#CATEGORY_OTHER_SELECTED_CLASS);
+    categroyOthers.querySelector('div').innerHTML =
+      this.#displayNameForOthersBtn();
   }
 }

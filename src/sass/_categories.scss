@@ -1,5 +1,6 @@
 .categories__wrap {
 }
+
 .categories__list {
   display: flex;
   justify-content: space-between;
@@ -54,14 +55,26 @@
     .categories__input:checked + & .category__arrow,
     &:hover .category__arrow {
       stroke: var(--clr-bg-filter);
-      transform: rotate(270deg);
+      // transform: rotate(270deg);
     }
+  }
+
+  .category__arrow.category_arrow--rotate {
+    transform: rotate(270deg);
   }
 
   .categories__input:checked + &,
   &:hover {
     color: var(--clr-pag-bg);
     background-color: var(--clr-pag-border);
+  }
+}
+
+.categories__label.categories__label--modal.categories__other--selected {
+  color: var(--clr-pag-bg);
+  background-color: var(--clr-pag-border);
+  & .category__arrow {
+    stroke: var(--clr-bg-filter);
   }
 }
 
