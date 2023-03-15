@@ -21,7 +21,7 @@ import {
   ClickerOnMenuItem,
 } from './header';
 import { CategoriesMain } from './categories';
-
+import { Calendar } from './calendarr';
 /**
  *
  */
@@ -49,3 +49,8 @@ const clickerOnBtmMobileForm = new ClickerOnBtmMobileForm();
 const toggleThem = new ToggleTheme();
 // menu clicker
 const clickerOnMenuItem = new ClickerOnMenuItem();
+
+/**
+ * calendar
+ */
+const calendar = new Calendar('.calendar__wrap');
