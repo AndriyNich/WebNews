@@ -20,6 +20,12 @@ import {
 import { CategoriesMain, CategoriesLoader } from './categories';
 
 /**
+ *
+ */
+// category
+const categoriesMain = new CategoriesMain();
+
+/**
  * Modal menu
  */
 // move block menu to need place
@@ -28,6 +34,7 @@ window.addEventListener(
   'resize',
   throttle(e => {
     manageMenuPosition.rebuildMobileMenuByWindowResize();
+    categoriesMain.windowsResize();
   }, 250)
 );
 // event 'click' on btn mobile form
@@ -36,10 +43,3 @@ const clickerOnBtmMobileForm = new ClickerOnBtmMobileForm();
 const toggleThem = new ToggleTheme();
 // menu clicker
 const clickerOnMenuItem = new ClickerOnMenuItem();
-
-/**
- *
- */
-// category
-
-//  const categoriesMain = new CategoriesMain();
